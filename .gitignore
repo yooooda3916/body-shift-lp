@@ -6,6 +6,7 @@ service-account-key.json
 
 # 一時ファイル
 .workspace/
+url.txt
 __pycache__/
 *.pyc
 
