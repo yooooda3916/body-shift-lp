@@ -577,6 +577,13 @@ section{
   display: flex;
   flex-direction: column;
   gap: 28px;
+  margin-bottom: 16px;
+}
+
+.ba-disclaimer{
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,.5);
   margin-bottom: 80px;
 }
 
@@ -601,6 +608,14 @@ section{
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.ba-photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .ba-photo span{
@@ -1317,11 +1332,11 @@ section{
         <div class="ba-card fade-up">
           <div class="ba-photo">
             <span>BEFORE</span>
-            <svg class="ba-photo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <img src="assets/images/ba-tamura-before.png" alt="田村さん（イメージ）受講前" loading="lazy">
           </div>
           <div class="ba-photo after">
             <span>AFTER</span>
-            <svg class="ba-photo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <img src="assets/images/ba-tamura-after.png" alt="田村さん（イメージ）受講後" loading="lazy">
           </div>
           <div class="ba-meta">
             <div>
@@ -1335,11 +1350,11 @@ section{
         <div class="ba-card fade-up" style="--fade-delay:.1s">
           <div class="ba-photo">
             <span>BEFORE</span>
-            <svg class="ba-photo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <img src="assets/images/ba-yamaguchi-before.png" alt="山口さん（イメージ）受講前" loading="lazy">
           </div>
           <div class="ba-photo after">
             <span>AFTER</span>
-            <svg class="ba-photo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <img src="assets/images/ba-yamaguchi-after.png" alt="山口さん（イメージ）受講後" loading="lazy">
           </div>
           <div class="ba-meta">
             <div>
@@ -1350,6 +1365,9 @@ section{
           </div>
         </div>
       </div>
+      <p class="ba-disclaimer">
+        ※上記の写真はイメージを伝えるためのAI生成画像であり、実在する特定の受講者本人の写真ではありません。
+      </p>
 
       <!-- お客様の声 -->
       <div class="voice-grid">
