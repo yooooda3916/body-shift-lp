@@ -1,0 +1,14 @@
+# 環境変数・認証情報（公開厳禁）
+.env
+*.key
+credentials.json
+service-account-key.json
+
+# 一時ファイル
+.workspace/
+__pycache__/
+*.pyc
+
+# OS固有ファイル
+.DS_Store
+Thumbs.db

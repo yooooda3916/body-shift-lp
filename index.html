@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BODY SHIFT Online｜自宅で受ける、専属トレーナーのオンラインパーソナルトレーニング</title>
+<meta name="description" content="BODY SHIFT Onlineは、自宅から専属トレーナーのマンツーマン指導が受けられるオンラインパーソナルトレーニング。科学的根拠に基づいたプログラムで、忙しい40代でも無理なく体が変わります。まずは無料カウンセリングへ。">
+
+<!-- Google Fonts: Noto Sans JP -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   0. Design Tokens / Reset
+   ========================================================= */
+:root{
+  --color-navy: #122A4E;
+  --color-navy-sub: #25436F;
+  --color-bg: #FAFAF9;
+  --color-white: #FFFFFF;
+  --color-text: #1E293B;
+  --color-text-sub: #52607A;
+  --color-accent: #3FA679; /* アイコン・ラベル・バッジ・数字などの通常アクセント色（グリーン） */
+  --color-cta: #DD7A3C; /* CTAボタン専用の例外色（オレンジ系） */
+  --color-border: #E4E7EC;
+
+  --max-width: 1200px;
+  --section-pad-pc: 140px;
+  --section-pad-sp: 72px;
+
+  --ease-out: cubic-bezier(.16,.84,.44,1);
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  font-weight: 400;
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+
+img{ max-width: 100%; display: block; }
+
+h1, h2, h3, h4{
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-navy);
+}
+
+p{ margin: 0; }
+
+a{ color: inherit; text-decoration: none; }
+
+button{ font-family: inherit; cursor: pointer; }
+
+ul{ margin: 0; padding: 0; list-style: none; }
+
+.container{
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section{
+  padding: var(--section-pad-pc) 0;
+}
+
+@media (max-width: 768px){
+  section{ padding: var(--section-pad-sp) 0; }
+}
+
+.section-head{
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 64px;
+}
+
+.section-eyebrow{
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--color-accent);
+  background: rgba(63,166,121,.08);
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.section-title{
+  font-size: clamp(24px, 3.2vw, 34px);
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.section-lead{
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--color-text-sub);
+  line-height: 1.9;
+}
+
+/* 白背景セクション（悩み共感・トレーナー紹介・FAQ）は、
+   グレー文字の視認性を上げるため色も濃くする */
+.worries .section-lead,
+.trainers .section-lead,
+.faq .section-lead{
+  color: #47536B;
+}
+
+/* =========================================================
+   1. Header
+   ========================================================= */
+.site-header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  background: transparent;
+  transition: background .3s var(--ease-out), box-shadow .3s var(--ease-out), padding .3s var(--ease-out);
+}
+
+.site-header.is-scrolled{
+  background: rgba(18,42,78,.92);
+  backdrop-filter: blur(6px);
+  padding: 14px 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+
+.site-header .container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand{
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  color: var(--color-white);
+}
+
+.brand span{ color: var(--color-accent); }
+
+/* =========================================================
+   2. CTA Button (共通)
+   ========================================================= */
+.cta-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px 40px;
+  background: var(--color-cta);
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(221,122,60,.28);
+  transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+}
+
+.cta-btn:hover,
+.cta-btn:focus-visible{
+  filter: brightness(1.08);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(221,122,60,.38);
+  outline: none;
+}
+
+.cta-btn:active{ transform: translateY(-1px); }
+
+.cta-btn--outline{
+  background: transparent;
+  color: var(--color-navy);
+  border: 1.5px solid var(--color-navy);
+  box-shadow: none;
+}
+
+.cta-btn--outline:hover,
+.cta-btn--outline:focus-visible{
+  background: var(--color-navy);
+  color: var(--color-white);
+  box-shadow: 0 10px 22px rgba(18,42,78,.22);
+}
+
+.cta-note{
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--color-text-sub);
+}
+
+/* =========================================================
+   3. First View
+   ========================================================= */
+.fv{
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--color-white);
+  background-image: url("assets/images/hero-bg.png");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.fv::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 20, 38, 0.5); /* 暗いオーバーレイ opacity 0.5 相当 */
+  z-index: 1;
+}
+
+.fv::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,20,38,.15) 0%, rgba(10,20,38,.05) 40%, rgba(10,20,38,.55) 100%);
+  z-index: 1;
+}
+
+.fv-inner{
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 140px 24px 64px;
+}
+
+.fv-catch{
+  font-size: clamp(24px, 5.2vw, 56px);
+  font-weight: 900;
+  line-height: 1.5;
+  letter-spacing: .02em;
+  text-shadow: 0 4px 24px rgba(0,0,0,.35);
+  color: var(--color-white);
+}
+
+.fv-catch em{
+  display: block;
+  font-style: normal;
+  color: #B7E4CE;
+}
+
+.fv-sub{
+  margin: 28px auto 0;
+  max-width: 560px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(255,255,255,.92);
+}
+
+/* 幅の狭いスマホでキャッチコピーが意図せず折り返さないよう、
+   字間を詰めて横幅の余裕を作る */
+@media (max-width: 480px){
+  .fv-catch{ letter-spacing: 0; }
+}
+
+.fv-cta{
+  margin-top: 44px;
+}
+
+.fv-stats{
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255,255,255,.25);
+}
+
+.fv-stats-inner{
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.fv-stat-num{
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 900;
+  color: var(--color-white);
+}
+
+.fv-stat-num span{
+  color: #7FD6AC;
+}
+
+.fv-stat-label{
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: .04em;
+  color: rgba(255,255,255,.82);
+}
+
+/* =========================================================
+   4. 悩み共感セクション
+   ========================================================= */
+.worries{
+  background: var(--color-white);
+}
+
+.worry-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px){
+  .worry-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px){
+  .worry-grid{ grid-template-columns: 1fr; }
+}
+
+.worry-card{
+  padding: 36px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  text-align: center;
+  background: var(--color-bg);
+}
+
+.worry-icon{
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.worry-icon svg{ width: 26px; height: 26px; }
+
+.worry-card h3{
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.worry-card p{
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #47536B;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   5. サービス紹介セクション
+   ========================================================= */
+.service{
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.service .container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+@media (max-width: 900px){
+  .service .container{ grid-template-columns: 1fr; gap: 40px; }
+}
+
+.service-media img{
+  border-radius: 20px;
+  box-shadow: 0 24px 48px rgba(0,0,0,.28);
+}
+
+.service-eyebrow{
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: #7FD6AC;
+  margin-bottom: 16px;
+}
+
+.service-text h2{
+  color: var(--color-white);
+  font-size: clamp(22px, 2.8vw, 30px);
+  margin-bottom: 20px;
+}
+
+.service-text p{
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,.82);
+  line-height: 1.95;
+  margin-bottom: 28px;
+}
+
+.service-points{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.service-point{
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.service-point svg{
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--color-accent);
+  margin-top: 2px;
+}
+
+/* =========================================================
+   6. 選ばれる理由セクション
+   ========================================================= */
+.reasons{ background: var(--color-bg); }
+
+.reason-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px){
+  .reason-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px){
+  .reason-grid{ grid-template-columns: 1fr; }
+}
+
+.reason-card{
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 32px 24px;
+}
+
+.reason-num{
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: .06em;
+  margin-bottom: 14px;
+}
+
+.reason-card h3{
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.reason-card p{
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--color-text-sub);
+}
+
+.reason-stat{
+  margin-top: 18px;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--color-navy);
+}
+
+.reason-stat span{
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-sub);
+  margin-left: 4px;
+}
+
+/* =========================================================
+   7. トレーナー紹介セクション
+   ========================================================= */
+.trainers{ background: var(--color-white); }
+
+.trainer-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 900px){
+  .trainer-grid{ grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+}
+
+.trainer-card{
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.trainer-photo{
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.trainer-photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trainer-body{ padding: 28px 26px 32px; }
+
+.trainer-role{
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: .06em;
+  margin-bottom: 8px;
+}
+
+.trainer-body h3{
+  font-size: 19px;
+  margin-bottom: 12px;
+}
+
+.trainer-tags{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.trainer-tags span{
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(18,42,78,.06);
+  color: var(--color-navy-sub);
+}
+
+.trainer-body p{
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #47536B;
+  line-height: 1.85;
+}
+
+/* =========================================================
+   8. お客様の声・ビフォーアフター（最重要セクション）
+   ========================================================= */
+.results{
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.results .section-title{ color: var(--color-white); }
+.results .section-lead{ color: rgba(255,255,255,.72); }
+
+/* ---- ビフォーアフター ---- */
+.ba-list{
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 80px;
+}
+
+.ba-card{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: rgba(255,255,255,.12);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+@media (max-width: 700px){
+  .ba-card{ grid-template-columns: 1fr; }
+}
+
+.ba-photo{
+  position: relative;
+  aspect-ratio: 4 / 3;
+  /* 実写画像に差し替え想定のプレースホルダー */
+  background: linear-gradient(135deg, #1b365f 0%, #0e1f38 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ba-photo span{
+  position: absolute;
+  top: 16px; left: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.14);
+  color: rgba(255,255,255,.85);
+}
+
+.ba-photo.after span{
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.ba-photo-icon{
+  width: 64px; height: 64px;
+  opacity: .28;
+  color: var(--color-white);
+}
+
+.ba-meta{
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px 24px;
+  background: rgba(255,255,255,.06);
+}
+
+.ba-meta-name{ font-size: 14px; font-weight: 700; }
+.ba-meta-sub{ font-size: 12.5px; font-weight: 300; color: rgba(255,255,255,.65); margin-top: 4px; }
+
+.ba-badge{
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-weight: 900;
+  font-size: 20px;
+  padding: 8px 18px;
+  border-radius: 999px;
+}
+
+.ba-badge small{ font-size: 12px; font-weight: 500; }
+
+/* ---- お客様の声 ---- */
+.voice-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 900px){
+  .voice-grid{ grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+}
+
+.voice-card{
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 20px;
+  padding: 32px 28px;
+}
+
+.voice-quote-icon{
+  width: 30px; height: 30px;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+}
+
+.voice-comment{
+  font-size: 14.5px;
+  font-weight: 300;
+  line-height: 1.95;
+  color: rgba(255,255,255,.9);
+  margin-bottom: 24px;
+}
+
+.voice-person{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.14);
+}
+
+.voice-avatar{
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.voice-avatar svg{ width: 22px; height: 22px; color: rgba(255,255,255,.6); }
+
+.voice-name{ font-size: 14px; font-weight: 700; }
+.voice-role{ font-size: 12px; font-weight: 300; color: rgba(255,255,255,.6); margin-top: 2px; }
+
+.results-cta{
+  margin-top: 72px;
+  text-align: center;
+}
+
+/* =========================================================
+   9. 料金プランセクション
+   ========================================================= */
+.pricing{ background: var(--color-bg); }
+
+.plan-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 900px){
+  .plan-grid{ grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+}
+
+.plan-card{
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 36px 30px;
+}
+
+.plan-card.is-featured{
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 20px 40px rgba(63,166,121,.14);
+  position: relative;
+}
+
+.plan-badge{
+  position: absolute;
+  top: -14px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  padding: 6px 18px;
+  border-radius: 999px;
+}
+
+.plan-name{ font-size: 17px; font-weight: 700; color: var(--color-navy); }
+.plan-desc{ font-size: 13px; font-weight: 400; color: var(--color-text-sub); margin-top: 8px; }
+
+.plan-price{
+  margin: 24px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.plan-price strong{ font-size: 34px; font-weight: 900; color: var(--color-navy); }
+.plan-price span{ font-size: 13px; color: var(--color-text-sub); }
+
+.plan-features{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex-grow: 1;
+}
+
+.plan-features li{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  font-weight: 400;
+}
+
+.plan-features svg{
+  flex-shrink: 0;
+  width: 18px; height: 18px;
+  color: var(--color-accent);
+  margin-top: 2px;
+}
+
+.plan-card .cta-btn{
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 14.5px;
+}
+
+/* =========================================================
+   10. FAQセクション
+   ========================================================= */
+.faq{ background: var(--color-white); }
+
+.faq-list{
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faq-item{
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.faq-question{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 26px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.faq-q-mark{
+  flex-shrink: 0;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--color-navy);
+  color: var(--color-white);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.faq-question-text{ flex-grow: 1; }
+
+.faq-icon{
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  color: var(--color-text-sub);
+  transition: transform .3s var(--ease-out);
+}
+
+.faq-item.is-open .faq-icon{ transform: rotate(45deg); }
+
+.faq-answer{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s var(--ease-out);
+}
+
+.faq-answer-inner{
+  padding: 0 26px 24px 68px;
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #47536B;
+  line-height: 1.9;
+}
+
+/* =========================================================
+   11. 申し込みフォームセクション
+   ========================================================= */
+.form-section{
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.form-section .section-title{ color: var(--color-white); }
+.form-section .section-lead{ color: rgba(255,255,255,.72); }
+
+.form-wrap{
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--color-white);
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow: 0 30px 60px rgba(0,0,0,.25);
+}
+
+@media (max-width: 560px){
+  .form-wrap{ padding: 36px 24px; }
+}
+
+.form-assurance{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 36px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.assurance-item{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--color-text-sub);
+}
+
+.assurance-item svg{ width: 18px; height: 18px; color: var(--color-accent); }
+
+.form-row{ margin-bottom: 22px; }
+
+.form-row label{
+  display: block;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 8px;
+}
+
+.form-row label .required{
+  color: #D9534F;
+  font-weight: 700;
+  margin-left: 4px;
+  font-size: 11px;
+}
+
+.form-row label .optional{
+  color: var(--color-text-sub);
+  font-weight: 500;
+  margin-left: 4px;
+  font-size: 11px;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea{
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 14.5px;
+  font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus{
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(63,166,121,.15);
+}
+
+.form-row textarea{ resize: vertical; min-height: 96px; }
+
+.form-error{
+  display: none;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #D9534F;
+}
+
+.form-row.has-error input,
+.form-row.has-error select{
+  border-color: #D9534F;
+}
+
+.form-row.has-error .form-error{ display: block; }
+
+.form-submit{
+  width: 100%;
+  margin-top: 8px;
+}
+
+.form-success{
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.form-success.is-visible{ display: block; }
+
+.form-success svg{
+  width: 56px; height: 56px;
+  color: var(--color-accent);
+  margin-bottom: 20px;
+}
+
+.form-success h3{ font-size: 18px; margin-bottom: 10px; }
+
+.form-success p{
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #47536B;
+}
+
+/* =========================================================
+   12. Footer
+   ========================================================= */
+.site-footer{
+  background: #0C1A32;
+  color: rgba(255,255,255,.55);
+  text-align: center;
+  padding: 40px 24px;
+  font-size: 12.5px;
+}
+
+.site-footer .brand{ color: rgba(255,255,255,.85); margin-bottom: 10px; display: block; }
+
+/* =========================================================
+   13. Floating CTA (mobile)
+   ========================================================= */
+.floating-cta{
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 90;
+  padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 -8px 24px rgba(0,0,0,.1);
+  transform: translateY(100%);
+  transition: transform .35s var(--ease-out);
+  display: none;
+}
+
+.floating-cta.is-visible{ transform: translateY(0); }
+
+.floating-cta .cta-btn{
+  width: 100%;
+  padding: 15px 20px;
+}
+
+@media (max-width: 768px){
+  .floating-cta{ display: block; }
+}
+
+/* =========================================================
+   14. Scroll Fade-in Animation
+   ========================================================= */
+.fade-up{
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s var(--ease-out), transform .7s var(--ease-out);
+  transition-delay: var(--fade-delay, 0s);
+}
+
+.fade-up.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .fade-up{ opacity: 1; transform: none; transition: none; }
+  html{ scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     Header
+     ========================================================= -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <a href="#top" class="brand">BODY SHIFT <span>Online</span></a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- =========================================================
+       1. ファーストビュー
+       ========================================================= -->
+  <section class="fv">
+    <div class="fv-inner">
+      <h1 class="fv-catch">
+        無理しないから、続く。<br>
+        <em>続くから、変わる。</em>
+      </h1>
+      <p class="fv-sub">
+        忙しい40代のための、自宅パーソナルトレーニング。
+        科学的根拠に基づいたプログラムだから、移動時間ゼロで無理なく続けられます。
+      </p>
+      <div class="fv-cta">
+        <a href="#form" class="cta-btn">まずは無料で相談する</a>
+      </div>
+    </div>
+
+    <div class="fv-stats">
+      <div class="fv-stats-inner">
+        <div class="fade-up">
+          <div class="fv-stat-num"><span>3,000</span>人突破</div>
+          <div class="fv-stat-label">累計受講者数</div>
+        </div>
+        <div class="fade-up" style="--fade-delay:.1s">
+          <div class="fv-stat-num"><span>95</span>%</div>
+          <div class="fv-stat-label">目標達成率</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       2. 悩み共感セクション
+       ========================================================= -->
+  <section class="worries" id="worries">
+    <div class="container">
+      <div class="section-head fade-up">
+        <span class="section-eyebrow">SYMPATHY</span>
+        <h2 class="section-title">こんなお悩み、ありませんか？</h2>
+        <p class="section-lead">
+          40代を迎えた会社員の多くが感じている、体と時間にまつわる悩み。
+          一つでも当てはまるなら、それはBODY SHIFT Onlineで解決できます。
+        </p>
+      </div>
+
+      <div class="worry-grid">
+        <div class="worry-card fade-up">
+          <div class="worry-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3l-8 10h6l-1 8 8-10h-6l1-8z"/></svg>
+          </div>
+          <h3>階段で息切れする</h3>
+          <p>以前より疲れやすく、体力の衰えを日々の生活の中で感じている。</p>
+        </div>
+
+        <div class="worry-card fade-up" style="--fade-delay:.1s">
+          <div class="worry-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <h3>ジムに通う時間がない</h3>
+          <p>仕事や家庭で毎日が忙しく、移動して通うジムは続けられない。</p>
+        </div>
+
+        <div class="worry-card fade-up" style="--fade-delay:.2s">
+          <div class="worry-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M20 9a8 8 0 00-14.9-3M4 15a8 8 0 0014.9 3"/></svg>
+          </div>
+          <h3>自己流ダイエットで挫折</h3>
+          <p>これまで何度も自己流で挑戦したが、続かずリバウンドしてしまった。</p>
+        </div>
+
+        <div class="worry-card fade-up" style="--fade-delay:.3s">
+          <div class="worry-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 0c0 1.5-2.5 2-2.5 4M12 17h.01"/></svg>
+          </div>
+          <h3>何から始めればいいかわからない</h3>
+          <p>正しい方法がわからず、結局何も始められないまま時間だけが過ぎている。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       3. サービス紹介セクション
+       ========================================================= -->
+  <section class="service" id="service">
+    <div class="container">
+      <div class="service-media fade-up">
+        <img src="assets/images/studio.png" alt="自宅のリビングに整えられたトレーニングスペース。ヨガマットとダンベルが置かれている">
+      </div>
+      <div class="service-text fade-up" style="--fade-delay:.1s">
+        <span class="service-eyebrow">ABOUT BODY SHIFT ONLINE</span>
+        <h2>自宅にいながら、<br>プロの指導を受けられる。</h2>
+        <p>
+          BODY SHIFT Onlineは、自宅から専属トレーナーのマンツーマン指導が受けられる
+          オンラインパーソナルトレーニングサービスです。移動時間はゼロ。
+          運動生理学・栄養学など科学的根拠に基づいて設計されたプログラムだから、
+          忙しい40代でも無理なく、着実に体が変わっていきます。
+        </p>
+        <div class="service-points">
+          <div class="service-point">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>自宅完結。移動時間ゼロで続けられる</span>
+          </div>
+          <div class="service-point">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>最初から最後まで、同じ専属トレーナーが伴走</span>
+          </div>
+          <div class="service-point">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>科学的根拠に基づいたオーダーメイドのプログラム</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       4. 選ばれる理由セクション
+       ========================================================= -->
+  <section class="reasons" id="reasons">
+    <div class="container">
+      <div class="section-head fade-up">
+        <span class="section-eyebrow">WHY US</span>
+        <h2 class="section-title">BODY SHIFT Onlineが選ばれる理由</h2>
+        <p class="section-lead">
+          忙しい40代でも無理なく続けられるよう、サービス設計そのものにこだわっています。
+        </p>
+      </div>
+
+      <div class="reason-grid">
+        <div class="reason-card fade-up">
+          <div class="reason-num">REASON 01</div>
+          <h3>専属トレーナー制</h3>
+          <p>担当が変わらないから、体調やクセを理解した的確な指導が受けられる。</p>
+          <div class="reason-stat">92<span>% 継続率</span></div>
+        </div>
+        <div class="reason-card fade-up" style="--fade-delay:.1s">
+          <div class="reason-num">REASON 02</div>
+          <h3>科学的根拠に基づく設計</h3>
+          <p>運動生理学・栄養学の知見をもとに、一人ひとりに合わせたプログラムを作成。</p>
+          <div class="reason-stat">95<span>% 目標達成率</span></div>
+        </div>
+        <div class="reason-card fade-up" style="--fade-delay:.2s">
+          <div class="reason-num">REASON 03</div>
+          <h3>1回30分から</h3>
+          <p>朝の支度前や仕事の合間など、隙間時間で無理なく完結できる。</p>
+          <div class="reason-stat">30<span>分〜 / 回</span></div>
+        </div>
+        <div class="reason-card fade-up" style="--fade-delay:.3s">
+          <div class="reason-num">REASON 04</div>
+          <h3>食事サポート付き</h3>
+          <p>トレーニングだけでなく、無理のない食事管理もあわせてサポート。</p>
+          <div class="reason-stat">3,000<span>人が受講</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       5. トレーナー紹介セクション
+       ========================================================= -->
+  <section class="trainers" id="trainers">
+    <div class="container">
+      <div class="section-head fade-up">
+        <span class="section-eyebrow">TRAINERS</span>
+        <h2 class="section-title">あなたを支える専属トレーナー</h2>
+        <p class="section-lead">
+          知識と経験豊富なトレーナーが、あなたの目標達成まで伴走します。
+        </p>
+      </div>
+
+      <div class="trainer-grid">
+        <div class="trainer-card fade-up">
+          <div class="trainer-photo">
+            <img src="assets/images/trainer-1.png" alt="トレーナー 田中健太のポートレート写真">
+          </div>
+          <div class="trainer-body">
+            <div class="trainer-role">HEAD TRAINER</div>
+            <h3>田中 健太</h3>
+            <div class="trainer-tags">
+              <span>NSCA-CPT</span>
+              <span>指導歴10年</span>
+            </div>
+            <p>大手フィットネスクラブでの指導経験を活かし、40代の体づくりを得意とする。落ち着いた指導で信頼度が高い。</p>
+          </div>
+        </div>
+
+        <div class="trainer-card fade-up" style="--fade-delay:.1s">
+          <div class="trainer-photo">
+            <img src="assets/images/trainer-2.png" alt="トレーナー 佐藤美咲のポートレート写真">
+          </div>
+          <div class="trainer-body">
+            <div class="trainer-role">TRAINER</div>
+            <h3>佐藤 美咲</h3>
+            <div class="trainer-tags">
+              <span>健康運動指導士</span>
+              <span>栄養学修了</span>
+            </div>
+            <p>運動初心者への指導を専門とし、明るく前向きな雰囲気で継続をサポート。食事アドバイスにも定評あり。</p>
+          </div>
+        </div>
+
+        <div class="trainer-card fade-up" style="--fade-delay:.2s">
+          <div class="trainer-photo">
+            <img src="assets/images/trainer-3.png" alt="トレーナー 鈴木大輔のポートレート写真">
+          </div>
+          <div class="trainer-body">
+            <div class="trainer-role">TRAINER</div>
+            <h3>鈴木 大輔</h3>
+            <div class="trainer-tags">
+              <span>理学療法士</span>
+              <span>指導歴8年</span>
+            </div>
+            <p>体の使い方や姿勢改善を専門知識に基づいて指導。ケガのリスクを抑えながら安全に体を変えていく。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       6. お客様の声・ビフォーアフターセクション（最重要）
+       ========================================================= -->
+  <section class="results" id="results">
+    <div class="container">
+      <div class="section-head fade-up">
+        <span class="section-eyebrow">RESULTS &amp; VOICES</span>
+        <h2 class="section-title">お客様の変化と声</h2>
+        <p class="section-lead">
+          同じ悩みを抱えていた40代の会社員が、どのように変わったのか。
+          実際の成果と生の声をご紹介します。
+        </p>
+      </div>
+
+      <!-- ビフォーアフター -->
+      <div class="ba-list">
+        <div class="ba-card fade-up">
+          <div class="ba-photo">
+            <span>BEFORE</span>
+            <svg class="ba-photo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          </div>
+          <div class="ba-photo after">
+            <span>AFTER</span>
+            <svg class="ba-photo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          </div>
+          <div class="ba-meta">
+            <div>
+              <div class="ba-meta-name">田村 誠さん（45歳・会社員）</div>
+              <div class="ba-meta-sub">受講期間：3ヶ月</div>
+            </div>
+            <div class="ba-badge">-6<small>kg / 3ヶ月</small></div>
+          </div>
+        </div>
+
+        <div class="ba-card fade-up" style="--fade-delay:.1s">
+          <div class="ba-photo">
+            <span>BEFORE</span>
+            <svg class="ba-photo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          </div>
+          <div class="ba-photo after">
+            <span>AFTER</span>
+            <svg class="ba-photo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          </div>
+          <div class="ba-meta">
+            <div>
+              <div class="ba-meta-name">山口 久美子さん（48歳・会社員）</div>
+              <div class="ba-meta-sub">受講期間：4ヶ月</div>
+            </div>
+            <div class="ba-badge">-5<small>% 体脂肪率</small></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- お客様の声 -->
+      <div class="voice-grid">
+        <div class="voice-card fade-up">
+          <svg class="voice-quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9 7C6.24 7 4 9.24 4 12v6h6v-6H6c0-1.66 1.34-3 3-3V7zm10 0c-2.76 0-5 2.24-5 5v6h6v-6h-4c0-1.66 1.34-3 3-3V7z"/></svg>
+          <p class="voice-comment">
+            「3ヶ月で-6kg。何より階段の息切れがなくなったのが一番嬉しいです。
+            オンラインだから移動がなく、仕事終わりでも無理なく続けられました。」
+          </p>
+          <div class="voice-person">
+            <div class="voice-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            </div>
+            <div>
+              <div class="voice-name">田村 誠さん</div>
+              <div class="voice-role">45歳・会社員</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="voice-card fade-up" style="--fade-delay:.1s">
+          <svg class="voice-quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9 7C6.24 7 4 9.24 4 12v6h6v-6H6c0-1.66 1.34-3 3-3V7zm10 0c-2.76 0-5 2.24-5 5v6h6v-6h-4c0-1.66 1.34-3 3-3V7z"/></svg>
+          <p class="voice-comment">
+            「自宅でできるからこそ続けられました。トレーナーさんが毎回同じ方なので、
+            自分の体の変化をちゃんと理解してくれているのが安心でした。」
+          </p>
+          <div class="voice-person">
+            <div class="voice-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            </div>
+            <div>
+              <div class="voice-name">山口 久美子さん</div>
+              <div class="voice-role">48歳・会社員</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="voice-card fade-up" style="--fade-delay:.2s">
+          <svg class="voice-quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9 7C6.24 7 4 9.24 4 12v6h6v-6H6c0-1.66 1.34-3 3-3V7zm10 0c-2.76 0-5 2.24-5 5v6h6v-6h-4c0-1.66 1.34-3 3-3V7z"/></svg>
+          <p class="voice-comment">
+            「気づけば会議中にズボンがゆるくなっていました。自己流で何度も挫折してきたので、
+            プロに任せて正解でした。」
+          </p>
+          <div class="voice-person">
+            <div class="voice-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            </div>
+            <div>
+              <div class="voice-name">小林 修さん</div>
+              <div class="voice-role">42歳・会社員</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-cta fade-up">
+        <a href="#form" class="cta-btn">まずは無料で相談する</a>
+        <p class="cta-note" style="color: rgba(255,255,255,.6);">相談だけでもOK。強引な勧誘は一切ありません。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       7. 料金プランセクション
+       ========================================================= -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-head fade-up">
+        <span class="section-eyebrow">PRICING</span>
+        <h2 class="section-title">料金プラン</h2>
+        <p class="section-lead">
+          ライフスタイルに合わせて選べる3つのプラン。まずは無料カウンセリングでご相談ください。
+        </p>
+      </div>
+
+      <div class="plan-grid">
+        <div class="plan-card fade-up">
+          <div class="plan-name">ライトプラン</div>
+          <p class="plan-desc">まずは無理なく始めたい方に</p>
+          <div class="plan-price"><strong>¥14,800</strong><span>/ 月（月4回）</span></div>
+          <ul class="plan-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>週1回・30分のオンライン指導</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>専属トレーナー制</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>チャットでの相談（平日）</li>
+          </ul>
+          <a href="#form" class="cta-btn cta-btn--outline">このプランで相談する</a>
+        </div>
+
+        <div class="plan-card is-featured fade-up" style="--fade-delay:.1s">
+          <div class="plan-badge">人気No.1</div>
+          <div class="plan-name">スタンダードプラン</div>
+          <p class="plan-desc">しっかり結果を目指したい方に</p>
+          <div class="plan-price"><strong>¥24,800</strong><span>/ 月（月8回）</span></div>
+          <ul class="plan-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>週2回・30分のオンライン指導</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>専属トレーナー制</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>食事アドバイス付き</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>チャットでの相談（毎日）</li>
+          </ul>
+          <a href="#form" class="cta-btn">このプランで相談する</a>
+        </div>
+
+        <div class="plan-card fade-up" style="--fade-delay:.2s">
+          <div class="plan-name">プレミアムプラン</div>
+          <p class="plan-desc">最短で、着実に変わりたい方に</p>
+          <div class="plan-price"><strong>¥39,800</strong><span>/ 月（月12回）</span></div>
+          <ul class="plan-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>週3回・30分のオンライン指導</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>専属トレーナー制</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>食事アドバイス・体組成分析付き</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>チャットでの相談（毎日・優先対応）</li>
+          </ul>
+          <a href="#form" class="cta-btn cta-btn--outline">このプランで相談する</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       8. よくある質問セクション
+       ========================================================= -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-head fade-up">
+        <span class="section-eyebrow">FAQ</span>
+        <h2 class="section-title">よくある質問</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-mark">Q</span>
+            <span class="faq-question-text">運動未経験でも大丈夫ですか？</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              はい、問題ありません。多くの方が運動初心者としてスタートしています。
+              現在の体力レベルに合わせてトレーナーがプログラムを調整しますので、
+              無理なく始めることができます。
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-mark">Q</span>
+            <span class="faq-question-text">本当にオンラインで効果が出ますか？</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              科学的根拠に基づいたプログラム設計と、専属トレーナーによるマンツーマン指導により、
+              対面と変わらない効果を実感いただいています。実際に目標達成率は95%です。
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-mark">Q</span>
+            <span class="faq-question-text">どんな機材が必要ですか？</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              スマートフォンかパソコンとインターネット環境があれば始められます。
+              専用の器具は不要で、ご自宅にあるもの、または軽いダンベル程度で十分対応可能です。
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-mark">Q</span>
+            <span class="faq-question-text">無料カウンセリングでは何をしますか？</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              オンラインで現在のお悩みや目標をヒアリングし、最適なプランをご提案します。
+              所要時間は約20分。強引な勧誘は一切行いませんので、お気軽にご相談ください。
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-mark">Q</span>
+            <span class="faq-question-text">支払い方法は何がありますか？</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              クレジットカードによる月々のお支払いに対応しています。
+              詳細は無料カウンセリング時にご案内いたします。
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-mark">Q</span>
+            <span class="faq-question-text">途中でプラン変更はできますか？</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              はい、可能です。体力や目標の変化に合わせて、翌月からプランを変更いただけます。
+              担当トレーナーにいつでもご相談ください。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       9. 無料カウンセリング申し込みフォームセクション
+       ========================================================= -->
+  <section class="form-section" id="form">
+    <div class="container">
+      <div class="section-head fade-up">
+        <span class="section-eyebrow">FREE COUNSELING</span>
+        <h2 class="section-title">無料カウンセリングに申し込む</h2>
+        <p class="section-lead">
+          下記フォームに必要事項をご入力の上、送信してください。
+          担当より1〜2営業日以内にご連絡いたします。
+        </p>
+      </div>
+
+      <div class="form-wrap fade-up">
+
+        <div class="form-assurance">
+          <div class="assurance-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            強引な勧誘は一切なし
+          </div>
+          <div class="assurance-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            所要時間 約20分
+          </div>
+          <div class="assurance-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+            オンラインで完結
+          </div>
+        </div>
+
+        <form id="counselingForm" novalidate onsubmit="return false;">
+          <div class="form-row">
+            <label for="name">お名前<span class="required">必須</span></label>
+            <input type="text" id="name" name="name" placeholder="山田 太郎" required>
+            <p class="form-error">お名前をご入力ください。</p>
+          </div>
+
+          <div class="form-row">
+            <label for="email">メールアドレス<span class="required">必須</span></label>
+            <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+            <p class="form-error">正しいメールアドレスをご入力ください。</p>
+          </div>
+
+          <div class="form-row">
+            <label for="tel">電話番号<span class="required">必須</span></label>
+            <input type="tel" id="tel" name="tel" placeholder="090-1234-5678" required>
+            <p class="form-error">電話番号をご入力ください。</p>
+          </div>
+
+          <div class="form-row">
+            <label for="date">希望日時<span class="required">必須</span></label>
+            <input type="text" id="date" name="date" placeholder="例：平日夜20時以降、土曜午前中 など" required>
+            <p class="form-error">ご希望の日時帯をご入力ください。</p>
+          </div>
+
+          <div class="form-row">
+            <label for="note">備考<span class="optional">任意</span></label>
+            <textarea id="note" name="note" placeholder="気になる点やご相談内容があればご記入ください"></textarea>
+          </div>
+
+          <button type="submit" class="cta-btn form-submit">まずは無料で相談する</button>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+          <h3>送信が完了しました</h3>
+          <p>お申し込みありがとうございます。担当より1〜2営業日以内にご連絡いたします。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- =========================================================
+     Footer
+     ========================================================= -->
+<footer class="site-footer">
+  <span class="brand">BODY SHIFT Online</span>
+  <p>&copy; 2026 BODY SHIFT Online. All Rights Reserved.</p>
+</footer>
+
+<!-- =========================================================
+     Floating CTA (mobile)
+     ========================================================= -->
+<div class="floating-cta" id="floatingCta">
+  <a href="#form" class="cta-btn">まずは無料で相談する</a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------------------------------------------------
+     ヘッダーのスクロール時背景切り替え
+     --------------------------------------------------------- */
+  var header = document.getElementById("siteHeader");
+  var fvHeight = window.innerHeight * 0.8;
+
+  function handleHeaderScroll(){
+    if(window.scrollY > fvHeight){
+      header.classList.add("is-scrolled");
+    } else {
+      header.classList.remove("is-scrolled");
+    }
+  }
+  window.addEventListener("scroll", handleHeaderScroll, { passive: true });
+  handleHeaderScroll();
+
+  /* ---------------------------------------------------------
+     モバイル用フローティングCTA
+     FVを過ぎたら表示し、フォームセクションに入ったら隠す
+     --------------------------------------------------------- */
+  var floatingCta = document.getElementById("floatingCta");
+  var formSection = document.getElementById("form");
+
+  function handleFloatingCta(){
+    var scrolledPastFv = window.scrollY > window.innerHeight * 0.6;
+    var formRect = formSection.getBoundingClientRect();
+    var formInView = formRect.top < window.innerHeight * 0.8;
+    if(scrolledPastFv && !formInView){
+      floatingCta.classList.add("is-visible");
+    } else {
+      floatingCta.classList.remove("is-visible");
+    }
+  }
+  window.addEventListener("scroll", handleFloatingCta, { passive: true });
+  handleFloatingCta();
+
+  /* ---------------------------------------------------------
+     スクロール連動フェードイン（IntersectionObserver）
+     画面内に入ったタイミングで一度だけ発火
+     --------------------------------------------------------- */
+  var fadeTargets = document.querySelectorAll(".fade-up");
+
+  if("IntersectionObserver" in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: "0px 0px -40px 0px"
+    });
+
+    fadeTargets.forEach(function(el){ observer.observe(el); });
+  } else {
+    // IntersectionObserver未対応環境ではすぐに表示する
+    fadeTargets.forEach(function(el){ el.classList.add("is-visible"); });
+  }
+
+  /* ---------------------------------------------------------
+     FAQアコーディオン
+     --------------------------------------------------------- */
+  var faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach(function(item){
+    var button = item.querySelector(".faq-question");
+    var answer = item.querySelector(".faq-answer");
+    var inner = item.querySelector(".faq-answer-inner");
+
+    button.addEventListener("click", function(){
+      var isOpen = item.classList.contains("is-open");
+
+      // 他のFAQは開いたままにする仕様（アコーディオンの独立開閉）
+      if(isOpen){
+        item.classList.remove("is-open");
+        button.setAttribute("aria-expanded", "false");
+        answer.style.maxHeight = null;
+      } else {
+        item.classList.add("is-open");
+        button.setAttribute("aria-expanded", "true");
+        answer.style.maxHeight = inner.offsetHeight + "px";
+      }
+    });
+  });
+
+  /* ---------------------------------------------------------
+     申し込みフォームのバリデーション＆送信
+     ※ 本番運用時はサーバーサイドの送信処理に置き換えてください
+     --------------------------------------------------------- */
+  var form = document.getElementById("counselingForm");
+  var formSuccess = document.getElementById("formSuccess");
+  var submitBtn = form.querySelector(".form-submit");
+
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function handleCounselingSubmit(e){
+    if(e){ e.preventDefault(); }
+    var isValid = true;
+
+    var requiredFields = form.querySelectorAll("[required]");
+    requiredFields.forEach(function(field){
+      var row = field.closest(".form-row");
+      var value = field.value.trim();
+      var fieldValid = value.length > 0;
+
+      if(field.type === "email" && fieldValid){
+        fieldValid = emailPattern.test(value);
+      }
+
+      if(fieldValid){
+        row.classList.remove("has-error");
+      } else {
+        row.classList.add("has-error");
+        isValid = false;
+      }
+    });
+
+    if(!isValid){
+      var firstError = form.querySelector(".has-error");
+      if(firstError){
+        firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      return;
+    }
+
+    // 送信成功の表示（実際の送信処理はバックエンド実装後に接続）
+    form.style.display = "none";
+    formSuccess.classList.add("is-visible");
+  }
+
+  // "submit"イベントを基本としつつ、環境によってフォームのsubmitイベントが
+  // 正しく発火しないケースに備え、送信ボタンのclickにも同じ処理を直接紐付ける
+  // （どちらか一方が発火すれば正しく動作する二重構成）
+  form.addEventListener("submit", handleCounselingSubmit);
+  submitBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    handleCounselingSubmit(null);
+  });
+
+})();
+</script>
+
+</body>
+</html>
